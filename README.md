@@ -14,6 +14,21 @@ Traditional AI assistants often generate a single response to complex questions.
 
 Seekers Court introduces a multi-agent reasoning framework where virtual advisors such as a Philosopher, Strategist, and Entrepreneur evaluate a user's dilemma independently. Their perspectives are synthesized into a final recommendation, helping users understand multiple angles before making a decision.
 
+  ## Agent Architecture
+
+Seekers Court follows a multi-agent reasoning architecture:
+
+- Philosopher Agent – Evaluates ethical, value-based and long-term considerations.
+- Strategist Agent – Analyzes risks, opportunities and future outcomes.
+- Entrepreneur Agent – Focuses on execution, innovation and practical action.
+- Verdict Synthesizer – Combines agent outputs into a balanced recommendation.
+
+This architecture demonstrates collaborative agent-based decision support where multiple specialized agents contribute to a final recommendation.
+
+  ## Current MVP
+
+The current version demonstrates the complete multi-agent workflow and user interaction model. Future versions will integrate cloud-hosted LLM services such as Azure OpenAI to provide dynamic reasoning capabilities.
+  
   ## Features
 
 Multi-perspective analysis
