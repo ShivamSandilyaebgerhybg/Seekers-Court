@@ -41,3 +41,13 @@ Domain-specific advisory councils
   ## Tagline
 
 "One Question. Many Minds. Better Decisions."
+
+  ## Screenshots
+
+  ### Home
+
+  (will add ss later)
+
+  ### Court Delibration
+
+  (Will add ss later)
