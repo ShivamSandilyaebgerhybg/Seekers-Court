@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seekers Court</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>⚖️ Seekers Court</h1>
+        <p class="tagline">
+            Present Your Question. Hear the Ages Reply.
+        </p>
+
+        <p class="subtitle">
+            An AI-powered multi-agent reasoning system that helps users make better decisions through diverse perspectives.
+        </p>
+
+        <textarea
+            id="question"
+            placeholder="Present your dilemma before the Court..."
+        ></textarea>
+
+        <div class="advisors">
+            <label><input type="checkbox" value="Philosopher" checked> Philosopher</label>
+            <label><input type="checkbox" value="Strategist" checked> Strategist</label>
+            <label><input type="checkbox" value="Entrepreneur" checked> Entrepreneur</label>
+        </div>
+
+        <button onclick="conveneCourt()">
+            Convene the Court
+        </button>
+
+        <div id="loading"></div>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+function conveneCourt() {
+
+    const question =
+        document.getElementById("question").value;
+
+    const result =
+        document.getElementById("result");
+
+    const loading =
+        document.getElementById("loading");
+
+    if(question.trim()===""){
+        alert("Please enter a question.");
+        return;
+    }
+
+    const selected = [];
+
+    document
+        .querySelectorAll(
+            '.advisors input[type="checkbox"]:checked'
+        )
+        .forEach(box=>{
+            selected.push(box.value);
+        });
+
+    if(selected.length===0){
+        alert("Select at least one advisor.");
+        return;
+    }
+
+    loading.innerHTML =
+        "⚖️ The Court is Deliberating...";
+
+    result.innerHTML = "";
+
+    setTimeout(()=>{
+
+        let output =
+`CASE PRESENTED
+
+${question}
+
+━━━━━━━━━━━━━━━━━━
+
+`;
+
+        selected.forEach(advisor=>{
+
+            output += advisor.toUpperCase() + "\n\n";
+
+            if(advisor==="Philosopher"){
+                output +=
+                "Reflect on long-term meaning and personal values.\n\n";
+            }
+
+            if(advisor==="Strategist"){
+                output +=
+                "Evaluate risks, rewards and future opportunities.\n\n";
+            }
+
+            if(advisor==="Entrepreneur"){
+                output +=
+                "Take action quickly and learn through execution.\n\n";
+            }
+
+            output += "━━━━━━━━━━━━━━━━━━\n\n";
+
+        });
+
+        output +=
+`FINAL VERDICT
+
+The Court recommends balancing thoughtful reflection with decisive action. Choose the path that best supports your long-term goals.`;
+
+        loading.innerHTML = "";
+        result.innerHTML = output;
+
+    },1500);
+}
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#0f172a;
+    color:white;
+}
+
+.container{
+    max-width:800px;
+    margin:auto;
+    padding:40px;
+}
+
+h1{
+    text-align:center;
+}
+
+.tagline{
+    text-align:center;
+    color:#94a3b8;
+}
+
+textarea{
+    width:100%;
+    height:140px;
+    margin-top:20px;
+    padding:15px;
+    border-radius:10px;
+    border:none;
+    font-size:16px;
+}
+
+.advisors{
+    margin:20px 0;
+    display:flex;
+    gap:20px;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+#loading{
+    margin-top:20px;
+    color:#fbbf24;
+}
+
+#result{
+    margin-top:25px;
+    white-space:pre-wrap;
+    line-height:1.6;
+    background:#1e293b;
+    padding:20px;
+    border-radius:10px;
+}
